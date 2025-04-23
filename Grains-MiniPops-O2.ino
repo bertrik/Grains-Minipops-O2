@@ -50,12 +50,12 @@
  * USEGRAINSINPUT3SYNC
  * rename or remove for standalone use
  */
-#define USEGRAINSINPUT3SYNC 
+#define _USEGRAINSINPUT3SYNC 
 
 /*
  * set this if you have a V1. Remove or rename if you have a version higher than V1
  */
- #define _GRAINSV1 
+#define GRAINSV1 
 
 /*
  * No configuration beyond this point
@@ -967,7 +967,7 @@ void loop() {
           mask = 255-((ADCL + (ADCH << 8)) >> 2); //0-255
       }
       if (MUX == 2) NewPatselect = (value - 1) >> 3;                            // save these for use at start of next bar
-      if (MUX == 2) NewPatlength = pgm_read_byte_near(patlen + patselect);      //
+      if (MUX == 2) NewPatlength = pgm_read_byte_near(patlen + NewPatselect);      //
 #ifndef USEGRAINSINPUT3SYNC
       if (MUX == 0) {
           tempo = ((129-value) << 4) + 1250; //17633-1250
